@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    
+    
+    <main>
+        <div class="play">
+            <button onclick="iniciar()">Inicial</button>
+        </div>
+        <div id="ba" onclick="falar('ba')"><span>BA</span></div>
+        <div id="be" onclick="falar('be')"><span>BE</span></div>
+        <div id="bi" onclick="falar('bi')"><span>BI</span></div>
+        <div id="bo" onclick="falar('bo')"><span>BO</span></div>
+        <div id="bu" onclick="falar('bu')"><span>BU</span></div>
+        
+        <audio  id="bg" src="./audios/bg.mp3" >
+        <audio  id="pergunta"> 
+        <audio autoplay="autoplay" id="resposta"> 
+        <audio autoplay="autoplay" id="fimDejogo"> 
+        <audio  autoplay="autoplay" id="audio" >
+        
+
+    </main>
+    <div  id="show" class="modal">
+        
+    </div>
+  <!--   <span  class="1star">★</span>
+        <span  class="2star">★★</span>
+        <span class="3star">★★★</span> -->
+    
+    <script type="text/javascript">
+        let jogando = true;
+        let elPergunta = document.querySelector("audio#pergunta")
+        let elResposta = document.querySelector("audio#resposta")
+        let elFimDeJogo = document.querySelector("audio#resposta")
+        let click
+        let total = 0
+
+        //definindo a altura do volume
+        document.querySelectorAll('audio#bg')[0].volume = 0.02
+        //definindo loop
+        document.querySelectorAll('audio#bg')[0].loop = true
+        document.querySelectorAll('audio#bg')[0].play()
+
+        //funcao pra reproduzir o som da silaba
+        function falar(text){
+            let elAudio = document.querySelector("audio#audio")
+            elAudio.src = "./audios/" + text +".mp3";
+        
+            click = text
+        }
+
+        function iniciar(){
+            game()
+             
+            
+        }
+        function game(){           
+
+            let pos = Math.floor(Math.random() * (5 - 0)) + 0;
+            let silaba
+            let pontos = {
+                0:"ba",
+                1:"be",
+                2:"bi",
+                3:"bo",
+                4:"bu",
+            }            
+            let frase = "Acerte a silaba " + pontos[pos]
+
+            setTimeout(function(){  
+                if(jogando == true){
+                    pergunta()
+                    
+                    setTimeout(function(){
+                        elResposta.src = "./audios/"+ pontos[pos] +".mp3"; 
+                    },1200)
+                    
+                    setTimeout(function(){
+                        silaba = click                    
+                    },6000)
+                    setTimeout(function(){
+                        if(jogando == true){
+                            if(pontos[pos] === silaba){elResposta.src = "./audios/efeitos/acerto.mp3"; total = total+ 1; }
+                            else{elResposta.src = "./audios/efeitos/errou.mp3";}
+                            game();
+                        }
+                        console.log(total);
+                    },6000)
+
+                }
+                
+            }, 1000); 
+            
+
+        }
+        let tempoDeJogo = 100000
+        function pergunta(){
+            elPergunta.src = "./audios/perguntas/A-onde-está-.mp3";
+            
+            elPergunta.play();
+            setTimeout(function(){
+                document.querySelector('main').style.display = 'none';
+                elPergunta.pause()
+                elResposta.pause()
+                if(jogando == true){
+                    elFimDeJogo.src = "./audios/efeitos/contagem.mp3"
+                }
+                jogando = false;
+                console.log("total: ", total)
+               
+    
+                
+            },tempoDeJogo)
+            //},100000)
+        }
+        setTimeout(function(){
+                               // Cria um novo elemento <span> vazio
+            var sp1 = document.createElement("span");
+            if(total <= 5){
+                sp1.innerHTML = "★"
+            }
+            else if(total >= 5 && 10 <= total){
+                sp1.innerHTML = "★★"
+            }
+            if(total >= 13){
+                sp1.innerHTML = "★★★"
+            }
+            // Guarda a referência do elemento atraś do qual nos queremos inserir o novo elemento
+            var sp2 = document.getElementById("show");
+            // Guarda a referência do elemento pai
+            var divPai = sp2.appendChild(sp1);
+            elFimDeJogo.pause()
+        },tempoDeJogo + 2000)
+    
+
+        
+        
+    </script>
+</body>
+</html>
