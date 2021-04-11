@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    border: 0;
+    clear: both;
+    font-size: 90%;
+    border: fl
+}
+body{
+    display:flex;
+    justify-content: unset;
+    align-items: flex-end;
+    width:100vw;
+    height: 100vh;
+    border: 1px solid red;
+    line-height: 100%;
+    background-image: url('./images/bg-lady.jpg') ;
+    background-repeat: repeat-y;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.modal {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+ 
+
+}
+.modal span {
+    font-size: 10rem;
+    color:#F3D63B
+}
+main{
+    display:flex;
+    border: 1px solid green;
+    font-size: 5rem;
+    width: 50%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    background:#aaa;
+    background-size: 200px;
+    border-radius: 20px 50%;
+}
+main div{
+    margin-right: 20px;
+    
+}
+
+main #ba{
+    background-color: #F3D63B;
+    border-radius: 100%;
+    height:40%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    transition: 1s;
+    cursor: pointer;
+}
+
+main #be{
+    background-color: #18A30C;
+    height:40%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    transition: 1s;
+    cursor: pointer;
+}
+main #bi{
+    background-color: #FF0099;
+    border-radius: 100%;
+    height:30%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    transition: 1s;
+    cursor: pointer;
+}
+main #bo{
+    background-color: #0047FF;
+    height:40%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    transition: 1s;
+    cursor: pointer;
+}
+main #bu{
+    background-color: #E21414;
+    border-radius: 100%;
+    height:40%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    transition: 1s;
+    cursor: pointer;
+}
+
+main #ba:hover{
+    height:40%;
+    padding: 30px;
+    font-size: 5.8rem;
+    transition: 0.3s;
+    
+}
+main #be:hover{
+    height:40%;
+    padding: 30px;
+    font-size: 5.8rem;
+    transition: 0.3s;
+}
+main #bi:hover{
+    height:40%;
+    padding: 30px;
+    font-size: 5.8rem;
+    transition: 0.3s;
+}
+main #bo:hover{
+    height:40%;
+    padding: 30px;
+    font-size: 5.8rem;
+    transition: 0.3s;
+}
+main #bu:hover{
+    height:40%;
+    padding: 30px;
+    font-size: 5.8rem;
+    transition: 0.3s;
+}
