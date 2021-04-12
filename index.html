@@ -9,11 +9,12 @@
 </head>
 <body>
     
-    
+    <div class="play">
+        <button onclick="iniciar()">START</button>
+        <div  id="show" class="modal"></div>
+    </div>
     <main>
-        <div class="play">
-            <button onclick="iniciar()">Inicial</button>
-        </div>
+        
         <div id="ba" onclick="falar('ba')"><span>BA</span></div>
         <div id="be" onclick="falar('be')"><span>BE</span></div>
         <div id="bi" onclick="falar('bi')"><span>BI</span></div>
@@ -24,16 +25,9 @@
         <audio  id="pergunta"> 
         <audio autoplay="autoplay" id="resposta"> 
         <audio autoplay="autoplay" id="fimDejogo"> 
-        <audio  autoplay="autoplay" id="audio" >
-        
+        <audio  autoplay="autoplay" id="audio" >        
 
     </main>
-    <div  id="show" class="modal">
-        
-    </div>
-  <!--   <span  class="1star">★</span>
-        <span  class="2star">★★</span>
-        <span class="3star">★★★</span> -->
     
     <script type="text/javascript">
         let jogando = true;
@@ -53,17 +47,15 @@
         function falar(text){
             let elAudio = document.querySelector("audio#audio")
             elAudio.src = "./audios/" + text +".mp3";
-        
             click = text
         }
 
         function iniciar(){
             game()
-             
-            
+            document.querySelector('.play button').style.display = 'none';
         }
         function game(){           
-
+            document.querySelector('main').style.display = 'flex';
             let pos = Math.floor(Math.random() * (5 - 0)) + 0;
             let silaba
             let pontos = {
@@ -122,12 +114,14 @@
             //},100000)
         }
         setTimeout(function(){
-                               // Cria um novo elemento <span> vazio
+            document.querySelector('.play button').style.display = 'none';
+
+            // Cria um novo elemento <span> vazio
             var sp1 = document.createElement("span");
-            if(total <= 5){
+            if(total < 5){
                 sp1.innerHTML = "★"
             }
-            else if(total >= 5 && 10 <= total){
+            else if(total >= 5 && 12 <= total){
                 sp1.innerHTML = "★★"
             }
             if(total >= 13){
@@ -138,7 +132,7 @@
             // Guarda a referência do elemento pai
             var divPai = sp2.appendChild(sp1);
             elFimDeJogo.pause()
-        },tempoDeJogo + 2000)
+        },(tempoDeJogo + 9000))
     
 
         
